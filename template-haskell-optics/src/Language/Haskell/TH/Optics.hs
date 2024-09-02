@@ -374,10 +374,18 @@ instance HasName Con where
     RecC n tys               -> (`RecC` tys) <$> f n
     InfixC l n r             -> (\n' -> InfixC l n' r) <$> f n
     ForallC bds ctx con      -> ForallC bds ctx <$> (toLensVL name) f con
-    GadtC ns argTys retTy    ->
-      (\n -> GadtC [n] argTys retTy) <$> f (head ns)
-    RecGadtC ns argTys retTy ->
-      (\n -> RecGadtC [n] argTys retTy) <$> f (head ns)
+    GadtC (h:_) argTys retTy    ->
+      (\n -> GadtC [n] argTys retTy) <$> f h
+    GadtC [] argTys retTy       -> error $
+      unwords [ "GadtC with empty name list:"
+              , "argTys=" <> show argTys
+              , "retTy=" <> show retTy ]
+    RecGadtC (h:_) argTys retTy ->
+      (\n -> RecGadtC [n] argTys retTy) <$> f h
+    RecGadtC [] argTys retTy    -> error $
+      unwords [ "RecGadtC with empty name list:"
+              , "argTys=" <> show argTys
+              , "retTy=" <> show retTy ]
 
 instance HasName Foreign where
   name = lensVL $ \f -> \case
