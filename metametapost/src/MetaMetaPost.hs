@@ -7,7 +7,10 @@ module MetaMetaPost where
 import Data.Semigroup ((<>))
 #endif
 
+#if !(MIN_VERSION_base(4,18,0))
 import           Control.Applicative    (liftA2)
+#endif
+
 import           Control.Monad.State
 import           Data.Foldable          (traverse_)
 import           Data.Kind              (Type)
