@@ -1,5 +1,5 @@
 {-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeInType #-}
+{-# LANGUAGE PolyKinds #-}
 {-# OPTIONS_HADDOCK not-home #-}
 
 -- | Core optic types and subtyping machinery.

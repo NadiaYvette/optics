@@ -1,5 +1,5 @@
 {-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeInType #-}
+{-# LANGUAGE PolyKinds #-}
 -- |
 -- Module: Optics.ReadOnly
 -- Description: Converting read-write optics into their read-only counterparts.

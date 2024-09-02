@@ -1,5 +1,6 @@
 {-# LANGUAGE CPP #-}
-{-# LANGUAGE TypeInType #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE PolyKinds #-}
 -- |
 -- Module: Optics.At.Core
 -- Description: Optics for 'Map' and 'Set'-like containers.
